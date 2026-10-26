@@ -10,9 +10,20 @@ public class Main
 {
     public static void main(String[]args)
     {
+        // Check whether the database password id configured
+        String password = System.getenv("DB_PASSWORD");
+
+        if(password==null || password.isBlank())
+        {
+            System.out.println("Database password is not configured!");
+            System.out.println("Please set the DB_PASSWORD environment variable.");
+            return;
+        }
+
+        System.out.println("========== STUDENT MANAGEMENT SYSTEM ==========");
         StudentDAO dao = new StudentDAO();
         Scanner sc= new Scanner(System.in);
-        System.out.println("========== STUDENT MANAGEMENT SYSTEM ==========");
+
         boolean running=true;
         while(running)
         {
